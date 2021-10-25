@@ -91,11 +91,19 @@ class _MaterialControlsState extends State<MaterialControls>
           if (chewieController.isLive)
             const Expanded(child: Text('LIVE'))
           else
-            _buildPosition(iconColor),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 15,),
+                  _buildProgressBar(),
+                  _buildPosition(iconColor),
+                ],
+              ),
+            ),
           if (chewieController.isLive)
-            const SizedBox()
-          else
-            _buildProgressBar(),
+            const SizedBox(),
           if (chewieController.allowPlaybackSpeedChanging)
             _buildSpeedButton(controller),
           if (chewieController.allowMuting) _buildMuteButton(controller),
